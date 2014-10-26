@@ -1,0 +1,38 @@
+h1 link check
+
+h2 admin/users
+/ = link_to admin_
+
+h2 games
+
+ul
+  li = link_to "一覧", games_path
+  li = link_to "詳細", game_path(1)
+  li = link_to "作成", new_game_path
+  li = link_to "編集", edit_game_path(1)
+
+h2 groups
+
+ul
+  / index?
+  li = link_to "同一作成者", group_path(1)
+  li = link_to "作成", new_group_path
+  li = link_to "編集", edit_group_path(1)
+
+
+h2 login
+
+ul
+  li = link_to "ログインページ", new_login_path
+
+h2 top
+
+ul
+  li = link_to "トップ", root_path
+  li = link_to "トップ2", top_index_path
+
+h2 users
+
+ul
+  li = link_to "ユーザ詳細", users_path
+  li = link_to "編集", edit_user_path(1)
