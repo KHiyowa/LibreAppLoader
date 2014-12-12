@@ -3,7 +3,7 @@
   .col-sm-8
     .row
       .col-sm-8
-        h1 ゲーム一覧 A 件 中 10 件
+        h1 ゲーム一覧 #{@games.count} 件 中 10 件
       .col-sm-4
         .dropdown align="right"
           button.btn.btn-default.dropdown-toggle type="button" id="DropdownMenu1" data-toggle="dropdown"
@@ -26,12 +26,11 @@
                   img alt="アイコン" src="@games.icon" width=120 height=120
                 .col-sm-10
                   h2
-                    = link_to("眠れるラボのなおすけ", game_path(game.id))
+                    = link_to(game.title, game_path(game.id))
                   h4
-                    a href="#" タイピング
-                    | &nbsp;
-                    a href="#" ブラウザ
-                    | &nbsp;
-                  | ラボでなおすけが寝ている間にSNSを乗っ取っちゃおう
-                  br
-                  | 起こさずに140字打ち切れるかな?
+                    - game.tags.each do |tag|
+                      a href="#"
+                        = tag.name
+                      | &nbsp;
+                    <br>
+                    = game.summary
