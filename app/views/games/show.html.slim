@@ -15,17 +15,20 @@
         .col-xs-2
           img.img-thumbnail src="..." width="140" height="140"
         .col-xs-6
-          h1 style="text-align:left" GAME TITLE
+          h1 style="text-align:left" = @game.title 
           br
-          h4 style="text-align:right" 
-            |バージョン 1.1.2
-            br 2014.10.28更新
+          h4 style="text-align:right"
+            | バージョン 
+            = @game.version
+            br
+            = @game.updated_at.strftime("%Y.%m.%d") 
+            | 更新
         .col-xs-3
           h1 &nbsp
           br
           h4 style="text-align:right"
             img.img-thumbnail src="..." width="50" height="50"
-            |チームビタミン
+            = @game.group.name
     
     .row
       div style="margin:10px 0px 30px"
@@ -33,36 +36,21 @@
           button.btn.btn-success.btn-lg ダウンロード
         .col-xs-3
           h4
-            | 100,000回のダウンロード
-            br スマートフォン用
+            = @game.dl_count
+            |回のダウンロード
+            br 
+            = @game.format
+            |用
     
-    div style="margin:10px 0px"
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
-      a.btn-link.btn-lg Tag
-      |&nbsp &nbsp
+    div style="margin:10px 20px"
+      - @game.tags.each do |tag|
+        a.btn-link.btn-lg
+          = tag.name
     
     div style="margin:10px 0px"
       .panel.panel-default
        .panel-body
-         |ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.
-    
+         = @game.summary  
     div style="margin:10px 0px" 
       .panel.panel-default
         .panel-body
@@ -111,75 +99,16 @@
                     button.btn.btn-primary 投稿
       
               br 
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 高松 太郎
-                    |&nbsp 3ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                 .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
-      
-              .panel.panel-default
-                .panel-body
-                  p
-                    strong 香川 一郎
-                    |&nbsp 5ヶ月前
-                  p ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text.ダミーテキスト。Dummy Text
+              - @game.comments.each do |comment|
+                .panel.panel-default
+                  .panel-body
+                    p
+                      strong 
+                        = comment.contributor
+                      | &nbsp&nbsp&nbsp
+                      = time_ago_in_words comment.created_at
+                      | &nbsp ago
+                    p = comment.comment
               div align="center"
                 ul.pagination
                   li.disabled
