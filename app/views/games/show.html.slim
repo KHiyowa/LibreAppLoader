@@ -15,7 +15,8 @@
         .col-xs-2
           img.img-thumbnail src="..." width="140" height="140"
         .col-xs-6
-          h1 style="text-align:left" = @game.title 
+          h1 style="text-align:left"
+            = @game.title 
           br
           h4 style="text-align:right"
             | バージョン 
@@ -88,16 +89,24 @@
           .row
             .col-xs-1
             .col-xs-10
-              form.form-group
-                label.contorl-label 名前
-                input.form-control type="text" placeholder="名前を入力してください。"
+              = form_for @comment, :url => { :controller => :comments, :action => 'new' } do |comment|
+
+                .form-group
+                  = comment.label :contributor, "名前", :class => 'control-label'
+                  = comment.text_field :contributor, :class => 'form-control'
+                    / input.form-control type="text" placeholder="名前を入力してください。"
                 br
-                label.control-label コメント
-                textarea.form-control rows="5" placeholder="コメントを入力してください。"
+                .form-group
+                  = comment.label :comment, "コメント", :class => 'control-label'
+                  = comment.text_area :comment, :class => 'form-control'
+                    / textarea.form-control rows="5" placeholder="コメントを入力してください。"
                 br
-                  div style="text-align:right"
-                    button.btn.btn-primary 投稿
-      
+                .form-group
+                  = comment.hidden_field :game_id, value: @game.id
+                .form-group
+                    div style="text-align:right"
+                      = comment.submit :投稿, :class => 'btn.btn-primary'
+                        / button.btn.btn-primary 投稿
               br 
               - @game.comments.each do |comment|
                 .panel.panel-default

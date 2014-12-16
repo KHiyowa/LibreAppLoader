@@ -10,5 +10,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.where(id: params[:id]).first
-  end
+    @comment = Comment.new
+  end 
+
 end

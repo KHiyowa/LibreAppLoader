@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :groups, only: [:show, :new, :edit]
   get "games/search" => "games#search"
   resources :games, only: [:index, :show, :new, :edit]
+  resources :comments, only: [:new]
+  post "comments/new" => "comments#new"
 
   namespace :admin do
     resources :users, only: %i(index edit new)
