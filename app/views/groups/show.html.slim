@@ -7,9 +7,8 @@
           tr 
             td
               .h4 あなたが所属するグループです。 
-            td
-              button.btn.btn-warning type="button" onclick="location.href='../groups/1/edit'" 編集
-
+            td 
+              = button_to "編集", edit_group_path, class: "btn btn-warning"
 br  
   .col-sm-2
   .col-sm-4
@@ -17,49 +16,40 @@ br
       thead
       tbody
         tr
-          img.img-thumbnail width="140" height="140" src="..." alt="..."
+          img.img-thumbnail width="140" height="140" src="#{@group.icon}" alt="..."
         tr
-          .h2 Group-Name
+          .h2 
+            = @group.name
     br
     .panel.panel-success
       .panel-heading
         .h4.panel-title 作成したゲーム
       .panel-body
         table border="0"
-          tr
-            td
-              img.img-rounded width="50" height="50" src="..." alt="..."
-            td
-              a href="#" オフトゥン・クエスト
-          tr
-            td
-              img.img-rounded width="50" height="50" src="..." alt="..."
-            td
-              a href="#" THE KUSONEMI M@STER
+          - @games.each do |game|
+            tr
+              td
+                img.img-rounded width="50" height="50" src="#{game.icon}" alt="?"
+              td
+                a href="#" = game.title
   table.col-sm-4 border="0" 
     tr
       td colspan="2"
         .h4 概要
     tr
       td colspan="2"
-        pre このグループは、SAOを開発するために作られた。
-            開発期間は１年であり、期間延長は原則認めないものとする。
-            開発環境として、ナーヴギアを用いる。
-            被験者は開発者自身とする。
+        pre 
+          = @group.summary
     tr
       td
         br
     tr
       td colspan="2"
         .h4 メンバー
-    tr
-      td width="60"
-        img.img-rounded width="50" height="50" src="..." alt="..."
-      td
-        a href="../users" Member-A
-    tr
-      td width="60"
-        img.img-rounded width="50" height="50" src="..." alt="..."
-      td
-        a href="../users" Member-B
+    - @users.each do |user|
+      tr
+        td width="60"
+          img.img-rounded width="50" height="50" src="#{user.icon}" alt="?"
+        td
+          a href="../users" = user.name
 

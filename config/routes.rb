@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :top, only: [:index]
   resource :login
   resources :users, only: [:index, :edit]
-  resources :groups, only: [:show, :new, :edit]
+  resources :groups, only: [:show, :new, :edit, :index]
   get "games/search" => "games#search"
   resources :games, only: [:index, :show, :new, :edit]
 
