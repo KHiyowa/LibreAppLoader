@@ -105,7 +105,7 @@
                   = comment.hidden_field :game_id, value: @game.id
                 .form-group
                     div style="text-align:right"
-                      = comment.submit :投稿, :class => 'btn.btn-primary'
+                      = comment.submit :投稿, :class => 'btn btn-primary'
                         / button.btn.btn-primary 投稿
               br 
               - @game.comments.each do |comment|
