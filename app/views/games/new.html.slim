@@ -3,21 +3,25 @@
   .col-xs-8
 
     h1 ゲームのアップロード        
-    form
+    = form_for (@game) do | game |
       .form-group
          .row
            .col-xs-4 style="text-align:right"
-             label.control-label
+             = game.label :game_file, "アップロードするゲーム", :class => 'control-label'
+             /label.control-label
                |アップロードするゲーム
            .col-xs-8
-             input type="file"
+             = game.file_field :game_file
+             /input.h5 type="file"
     
       .form-group
          .row
            .col-xs-4 style="text-align:right"
-             label.control-label プラットフォーム
+             = game.label :format, "プラットフォーム", :class => 'control-label'
+             /label.control-label プラットフォーム
            .col-xs-8
-             select.form-control
+             = game.select :format,  [["オンライン", "オンライン"],["パソコン","パソコン"], ["スマートフォン", "スマートフォン"]], {:prompt=>"プラットフォームを選択"}, :class => 'form-control'
+             /select.form-control
                option プラットフォームを選択
                option オンライン
                option パソコン
@@ -27,24 +31,30 @@
       .form-group
         .row
           .col-xs-4 style="text-align:right"
-            label.control-label タイトル
+            = game.label :title, "タイトル", :class => 'control-label'
+            /label.control-label タイトル
           .col-xs-8
-            input.form-control type="text" placeholder="ゲームのタイトル"
+            = game.text_field :title, :class => 'form-control', :palceholder => "ゲームのタイトル"
+            /input.form-control type="text" placeholder="ゲームのタイトル"
        
       .form-group
         .row
           .col-xs-4 style="text-align:right"
-            label.control-label バージョン
+            = game.label :version, "バージョン"
+            /label.control-label バージョン
           .col-xs-8
-            input.form-control type="text" placeholder="(例) 1.1.2"
+            = game.text_field :version, :class => 'form-control', :placeholder => "(例)1.1.2"
+            /input.form-control type="text" placeholder="(例) 1.1.2"
       
     
       .form-group
         .row
           .col-xs-4 style="text-align:right"
-            label.control-label アイコン画像
+            = game.label :icon, "アイコン画像", :class => 'control-label'
+            /label.control-label アイコン画像
           .col-xs-8
-            input type="file"
+            = game.file_field :icon
+            /input type="file"
     
       .form-group
         .row
@@ -75,9 +85,11 @@
       .form-group
         .row
           .col-xs-4 style="text-align:right"
-            label.control-control 説明文
+            = game.label :summary,"説明文", :class => 'control-label'
+            /label.control-control 説明文
           .col-xs-8
-            textarea.form-control rows="7" placeholder="マークダウン記法で書いてください。"
+            = game.text_area :summary, :class => 'form-control', :rows => '7'
+            /textarea.form-control rows="7" placeholder="マークダウン記法で書いてください。"
       
       div style="margin:40px 0px"
         .form-group
@@ -101,4 +113,5 @@
             input.h5 type="file"
       
       div style="text-align:right"
-        = link_to("アップロード", game_path(1), method: :get, class:"btn btn-primary") 
+        = game.submit :アップロード, :class => 'btn btn-primary'
+        /= link_to("アップロード", game_path(1), method: :get, class:"btn btn-primary") 

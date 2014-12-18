@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit]
   resources :groups, only: [:show, :new, :edit]
   get "games/search" => "games#search"
-  resources :games, only: [:index, :show, :new, :edit]
+  resources :games, only: [:index, :show, :new, :edit, :create]
   resources :comments, only: [:new]
   post "comments/new" => "comments#new"
 
