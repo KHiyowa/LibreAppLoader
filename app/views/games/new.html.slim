@@ -1,9 +1,9 @@
-.rowOB
+.row
   .col-xs-2
   .col-xs-8
 
     h1 ゲームのアップロード        
-    = form_tag ('/games_path', :method => :post) do
+    = form_tag(games_path, :method => :post) do
       .form-group
          .row
            .col-xs-4 style="text-align:right"
@@ -11,7 +11,7 @@
              /label.control-label
                |アップロードするゲーム
            .col-xs-8
-             = game.file_field :game_file
+             = file_field :game, :game_file
              /input.h5 type="file"
     
       .form-group
@@ -68,14 +68,17 @@
               option Group F
               option Group G
       
-      div style="margin:40px 0px"
-        .form-group
-          .row
-            .col-xs-4 style="text-align:right"
-              label.control-label タグ1
-            .col-xs-8
-              input.form-control type="text" placeholder="タグ名"
-        .row
+      div style="margin:40px 0px" 
+        -for tag_num in 1..10 do
+          .form-group
+            .row
+              .col-xs-4 style="text-align:right"
+                = label :tag, :name, "タグ#{tag_num}", :class => 'control-label'
+                /label.control-label タグ1
+              .col-xs-8
+                = text_field :tag, :name, :index => tag_num,  :class => 'form-control' 
+                /input.form-control type="text" placeholder="タグ名"
+        /.row
           .col-xs-4 style="text-align:right"
             button.btn.btn-default.btn-sm
               span.glyphicon.glyphicon-plus
@@ -92,13 +95,16 @@
             /textarea.form-control rows="7" placeholder="マークダウン記法で書いてください。"
       
       div style="margin:40px 0px"
-        .form-group
-          .row
-            .col-xs-4 style="text-align:right"
-              label.control-label キャプチャ画像1
-            .col-xs-8
-              input.h5 type="file"
-        .row
+        -for picture_num in 1..5
+          .form-group
+            .row
+              .col-xs-4 style="text-align:right"
+                = label :picture, :picture, "キャプチャ画像#{picture_num}", :class => 'control-label'
+                /label.control-label キャプチャ画像1
+              .col-xs-8
+                = file_field :picture, :pictire, :index => picture_num
+                /input.h5 type="file"
+        /.row
           .col-xs-4 style="text-align:right"
             button.btn.btn-default.btn-sm
               span.glyphicon.glyphicon-plus
@@ -108,10 +114,12 @@
       .form-group
         .row
           .col-xs-4 style="text-align:right"
-            label.control-label 動画
+            = label :game, :movie, "動画"
+            /label.control-label 動画
           .col-xs-8
-            input.h5 type="file"
+            = file_field :game, :movie
+            /input.h5 type="file"
       
       div style="text-align:right"
-        = submit :アップロード, :class => 'btn btn-primary'
+        = submit_tag "アップロード", :class => 'btn btn-primary'
         /= link_to("アップロード", game_path(1), method: :get, class:"btn btn-primary") 
