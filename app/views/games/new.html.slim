@@ -3,7 +3,7 @@
   .col-xs-8
 
     h1 ゲームのアップロード        
-    = form_tag(games_path, :method => :post) do
+    = form_tag(games_path, :method => :post, :multipart => :true) do
       .form-group
          .row
            .col-xs-4 style="text-align:right"
