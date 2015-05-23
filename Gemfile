@@ -64,3 +64,5 @@ gem 'slim'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'draper'
+gem 'kaminari'
+
