@@ -1,6 +1,6 @@
 class CreateGames < ActiveRecord::Migration
   def change
-    create_table :games do |t|
+    create_table :games, options: 'ENGINE=Mroonga' do |t|
       t.string :title, null: false, unique: true
       t.string :icon, null: false
       t.integer :group_id, null: false
