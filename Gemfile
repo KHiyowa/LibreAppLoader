@@ -2,11 +2,16 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 # gem 'pg'
 # Use mysql as the database for Active Record
 gem 'mysql2'
+# Use Mroonga
+gem 'activerecord-mysql-awesome'
+gem 'activerecord-mysql-comment'
+# Use Rroonga
+# gem 'rroonga'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
